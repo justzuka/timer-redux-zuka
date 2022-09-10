@@ -32,9 +32,14 @@ function Timer(props: props) {
 	}
 
 	useEffect(() => {
+		console.log("use effect");
 		const interval = setInterval(() => {
 			dispatch(update());
 		}, props.updateInterval);
+
+		return () => {
+			clearInterval(interval);
+		};
 	}, []);
 
 	return (
